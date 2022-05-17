@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,S1LoginScreen::class.java)
             startActivity(intent)
             finish()
-        a;lskdl()
         },500)
     }
 }
