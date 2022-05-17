@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         // Logic for the splash screen
         supportActionBar?.hide()
         Handler().postDelayed({
-            val intent = Intent(this,S4NewEntry::class.java)
+            val intent = Intent(this,TestingAccessScreens::class.java)
             startActivity(intent)
             finish()
         },500)
