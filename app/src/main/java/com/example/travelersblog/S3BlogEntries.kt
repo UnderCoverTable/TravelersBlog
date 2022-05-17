@@ -7,5 +7,6 @@ class S3BlogEntries : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_s3_blog_entries)
+
     }
 }
