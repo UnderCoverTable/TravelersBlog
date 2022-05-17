@@ -10,7 +10,7 @@
         android:id="@+id/newEntryTItle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Blog  Entry"
+        android:text="New Blog Entry"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textSize="35sp"
         tools:layout_editor_absoluteX="82dp"
@@ -21,16 +21,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pic:"
+        android:textSize="20sp"
         tools:layout_editor_absoluteX="82dp"
         tools:layout_editor_absoluteY="135dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/imageListButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose"
         tools:layout_editor_absoluteX="301dp"
-        tools:layout_editor_absoluteY="125dp" />
+        tools:layout_editor_absoluteY="135dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

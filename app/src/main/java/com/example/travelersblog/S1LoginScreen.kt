@@ -15,7 +15,7 @@ class S1LoginScreen : AppCompatActivity() {
 
         supportActionBar?.hide()
         binding.RegisterButton.setOnClickListener{
-            val intent = Intent(this,S2RegisterScreen::class.java)
+            val intent = Intent(this,S5ImageList::class.java)
             startActivity(intent)
 
         }
