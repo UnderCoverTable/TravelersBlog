@@ -9,6 +9,10 @@ import com.example.travelersblog.S5RecyclerView.adapter.ItemAdapter
 class S5ImageList : AppCompatActivity() {
     private lateinit var binding: ActivityS5ImageListBinding
 
+    companion object {
+        var imageID = 0
+        var imageName = " "
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityS5ImageListBinding.inflate(layoutInflater)

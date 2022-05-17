@@ -7,8 +7,9 @@
         <entry key="app/src/main/res/layout/activity_s1_login_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_s2_register_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_s3_blog_entries.xml" value="0.16394927536231885" />
-        <entry key="app/src/main/res/layout/activity_s4_new_entry.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_s4_new_entry.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_s5_image_list.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_s6_blog_page.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/s5_list_image_item.xml" value="0.19375" />
       </map>
     </option>

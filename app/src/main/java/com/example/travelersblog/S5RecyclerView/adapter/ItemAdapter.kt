@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelersblog.R
 import com.example.travelersblog.S4NewEntry
+import com.example.travelersblog.S5ImageList
 import com.example.travelersblog.S5RecyclerView.model.Images
 
 
@@ -42,7 +43,7 @@ class ItemAdapter(
         holder.imageView.setOnClickListener {
                 val context = holder.view.context
                 val intent = Intent(context, S4NewEntry::class.java)
-                intent.putExtra("id",item.imageResourceId)
+                S5ImageList.imageID = item.imageResourceId
                 context.startActivity(intent)
         }
     }
