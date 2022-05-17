@@ -6,4 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".S4NewEntry">
 
+    <TextView
+        android:id="@+id/newEntryTItle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Blog  Entry"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textSize="35sp"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pic:"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="135dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose"
+        tools:layout_editor_absoluteX="301dp"
+        tools:layout_editor_absoluteY="125dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
