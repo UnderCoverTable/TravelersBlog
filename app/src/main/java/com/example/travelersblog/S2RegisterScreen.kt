@@ -1,6 +1,7 @@
 package com.example.travelersblog
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.travelersblog.databinding.ActivityS2RegisterScreenBinding
 import java.io.File
@@ -18,6 +19,7 @@ class S2RegisterScreen : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        Log.d("FileExists", "user-db.txt exists: ${file.exists()}")
         loadData()
         file.createNewFile()
 

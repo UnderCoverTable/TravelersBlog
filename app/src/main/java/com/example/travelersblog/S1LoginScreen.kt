@@ -3,6 +3,7 @@ package com.example.travelersblog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.travelersblog.databinding.ActivityMainBinding
 import com.example.travelersblog.databinding.ActivityS1LoginScreenBinding
 import java.io.File
@@ -18,6 +19,7 @@ class S1LoginScreen : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        Log.d("FileExists", "user-db.txt exists: ${file.exists()}")
         loadData()
 
         binding.RegisterButton.setOnClickListener {

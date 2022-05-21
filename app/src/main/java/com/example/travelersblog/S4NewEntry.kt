@@ -2,6 +2,7 @@ package com.example.travelersblog
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.travelersblog.databinding.ActivityS4NewEntryBinding
 import java.io.File
@@ -17,6 +18,7 @@ class S4NewEntry : AppCompatActivity() {
         binding = ActivityS4NewEntryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Log.d("FileExists", "blog-db.txt exists: ${file.exists()}")
         loadData()
         file.createNewFile()
 
