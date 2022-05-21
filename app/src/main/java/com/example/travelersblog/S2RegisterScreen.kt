@@ -97,7 +97,7 @@ class S2RegisterScreen : AppCompatActivity() {
     }
 
     private fun writeToFile(user: User) {
-        file.appendText("\n${user.username}, ${user.password}, ${user.email}")
+        file.appendText("${user.username}, ${user.password}, ${user.email}\n")
     }
 
     private fun loadData() {

@@ -1,8 +1,7 @@
 package com.example.travelersblog
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.travelersblog.databinding.ActivityS1LoginScreenBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.travelersblog.databinding.ActivityS3BlogEntriesBinding
 
 class S3BlogEntries : AppCompatActivity() {
@@ -11,5 +10,6 @@ class S3BlogEntries : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityS3BlogEntriesBinding.inflate(layoutInflater)
-        setContentView(binding.root)    }
+        setContentView(binding.root)
+    }
 }

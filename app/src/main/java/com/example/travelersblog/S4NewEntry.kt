@@ -1,20 +1,23 @@
 package com.example.travelersblog
 
-import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.example.travelersblog.databinding.ActivityS1LoginScreenBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.travelersblog.databinding.ActivityS4NewEntryBinding
+import java.io.File
 
 class S4NewEntry : AppCompatActivity() {
     private lateinit var binding: ActivityS4NewEntryBinding
+    private val file = File("blog-db.txt")
+    private lateinit var userDb: MutableMap<String, MutableList<String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityS4NewEntryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        loadData()
+        file.createNewFile()
 
         supportActionBar?.hide()
 
@@ -22,11 +25,43 @@ class S4NewEntry : AppCompatActivity() {
             val intent = Intent(this,S5ImageList::class.java)
             startActivity(intent)
         }
+
         if(S5ImageList.imageID != 0){
             findImageName(S5ImageList.imageID)
-            var pic_str : String = "Pic: "
-            binding.picName.text = pic_str.plus(" ").plus(S5ImageList.imageName)
+            val picStr = "Pic: "
+            binding.picName.text = picStr.plus(" ").plus(S5ImageList.imageName)
 
+        }
+
+        binding.saveButton.setOnClickListener {
+            val imageId = S5ImageList.imageID.toString()
+            val place = binding.editTextPlace.text.toString()
+            val shortDesc = binding.editTextShortdesc.text.toString()
+            val longDesc = binding.editTextLongdesc.text.toString()
+            saveEntry(imageId = imageId, place = place, shortDesc = shortDesc, longDesc = longDesc)
+            resetViews()
+        }
+
+    }
+
+    private fun resetViews() {
+        S5ImageList.imageID = 0
+        binding.editTextLongdesc.text = null
+        binding.editTextShortdesc.text = null
+        binding.editTextPlace.text = null
+    }
+
+    private fun saveEntry (imageId: String, place: String, shortDesc: String, longDesc: String) {
+        file.appendText("${imageId}, ${place}, ${shortDesc}, ${longDesc}\n")
+    }
+
+    private fun loadData() {
+        val data = file.readText()
+        data.split("\n").forEach {
+            val temp = it.split(", ")
+            if (!userDb.containsKey(temp[0])){
+                userDb[temp[0] + temp[1]] = mutableListOf(temp[2], temp[3])
+            }
         }
     }
 }
@@ -52,5 +87,4 @@ fun findImageName(id:Int){
         R.drawable.fig017-> S5ImageList.imageName = "fig017"
         R.drawable.fig018-> S5ImageList.imageName = "fig018"
     }
-
 }
