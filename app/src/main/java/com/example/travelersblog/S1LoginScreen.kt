@@ -9,7 +9,7 @@ import java.io.File
 
 class S1LoginScreen : AppCompatActivity() {
     private lateinit var binding: ActivityS1LoginScreenBinding
-    private val file = File("user-db.txt")
+    private val file = File(filesDir, "user-db.txt")
     private lateinit var userDb: MutableMap<String, MutableList<String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {

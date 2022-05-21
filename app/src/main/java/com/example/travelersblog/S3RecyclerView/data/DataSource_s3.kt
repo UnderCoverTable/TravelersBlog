@@ -1,13 +1,13 @@
 package com.example.travelersblog.S3RecyclerView.data
 
+import android.content.Context
 import com.example.travelersblog.R
 import com.example.travelersblog.S3RecyclerView.model.Info
 import com.example.travelersblog.S5RecyclerView.model.Images
 import java.io.File
 
-class DataSource_s3() {
-
-    private val file = File("blog-db.txt")
+class DataSource_s3(context: Context) {
+    private val file = File(context.filesDir, "blog-db.txt")
 
 
     fun loadInfo(): MutableList<Info> {

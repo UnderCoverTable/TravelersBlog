@@ -8,7 +8,7 @@ import java.io.File
 
 class S4NewEntry : AppCompatActivity() {
     private lateinit var binding: ActivityS4NewEntryBinding
-    private val file = File("blog-db.txt")
+    private val file = File(filesDir, "blog-db.txt")
     private lateinit var blogDb: MutableMap<String, MutableList<String>>
 
 

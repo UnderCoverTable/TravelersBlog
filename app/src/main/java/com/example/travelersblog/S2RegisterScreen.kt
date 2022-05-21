@@ -8,7 +8,7 @@ import java.util.regex.Pattern
 
 class S2RegisterScreen : AppCompatActivity() {
     private lateinit var binding: ActivityS2RegisterScreenBinding
-    private val file = File("user-db.txt")
+    private val file = File(filesDir, "user-db.txt")
     private lateinit var userDb: MutableMap<String, MutableList<String>>
 
 
