@@ -4,6 +4,7 @@ import com.example.travelersblog.R
 import com.example.travelersblog.S5RecyclerView.model.Images
 
 class Datasource() {
+
     fun loadImages(): List<Images> {
         return listOf<Images>(
             Images(R.drawable.fig001),

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelersblog.R
 import com.example.travelersblog.S4NewEntry
@@ -29,7 +28,6 @@ class ItemAdapter(
             .inflate(R.layout.s5_list_image_item, parent, false)
         return ItemViewHolder(adapterLayout)
     }
-
 
 
     /**
