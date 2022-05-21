@@ -33,6 +33,8 @@ class S1LoginScreen : AppCompatActivity() {
                 val intent = Intent(this, S3BlogEntries::class.java)
                 intent.putExtra("guest", false)
                 startActivity(intent)
+            } else {
+                TODO("Show an error message that credentials not found in records")
             }
         }
 
@@ -45,8 +47,15 @@ class S1LoginScreen : AppCompatActivity() {
     }
 
     private fun validate(username: String, password: String): Boolean {
-        var validate = false
-        return validate
+        var flag = false
+        if (!userDb.containsKey(username)){
+            return false
+        }
+        val userPassword = userDb[username]!![0]
+        if (userPassword == password) {
+            flag = true
+        }
+        return flag
     }
 
     private fun loadData() {
