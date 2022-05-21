@@ -17,7 +17,6 @@ class S3BlogEntries : AppCompatActivity() {
         binding = ActivityS3BlogEntriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val myDataset = DataSource_s3(this).loadInfo()
         binding.s3RecyclerView.adapter = ItemAdapter_s3(myDataset)
 
