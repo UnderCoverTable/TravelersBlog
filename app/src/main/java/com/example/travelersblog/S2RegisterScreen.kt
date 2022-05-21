@@ -97,13 +97,13 @@ class S2RegisterScreen : AppCompatActivity() {
     }
 
     private fun writeToFile(user: User) {
-        file.appendText("${user.username}, ${user.password}, ${user.email}\n")
+        file.appendText("${user.username}|||${user.password}|||${user.email}\n")
     }
 
     private fun loadData() {
         val data = file.readText()
         data.split("\n").forEach {
-            val temp = it.split(", ")
+            val temp = it.split("|||")
             if (!userDb.containsKey(temp[0])){
                 userDb[temp[0]] = mutableListOf(temp[1], temp[2])
             }

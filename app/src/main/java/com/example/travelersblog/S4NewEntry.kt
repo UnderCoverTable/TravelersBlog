@@ -52,13 +52,13 @@ class S4NewEntry : AppCompatActivity() {
     }
 
     private fun saveEntry (imageId: String, place: String, shortDesc: String, longDesc: String) {
-        file.appendText("${imageId}, ${place}, ${shortDesc}, ${longDesc}\n")
+        file.appendText("${imageId}||${place}||${shortDesc}||${longDesc}\n")
     }
 
     private fun loadData() {
         val data = file.readText()
         data.split("\n").forEach {
-            val temp = it.split(", ")
+            val temp = it.split("||")
             if (!userDb.containsKey(temp[0])){
                 userDb[temp[0] + temp[1]] = mutableListOf(temp[2], temp[3])
             }
