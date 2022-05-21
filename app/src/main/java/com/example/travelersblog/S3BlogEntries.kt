@@ -18,7 +18,7 @@ class S3BlogEntries : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        val myDataset = DataSource_s3().loadInfo()
+        val myDataset = DataSource_s3(this).loadInfo()
         binding.s3RecyclerView.adapter = ItemAdapter_s3(myDataset)
 
         val guest: Boolean = intent.getBooleanExtra("guest", true)
