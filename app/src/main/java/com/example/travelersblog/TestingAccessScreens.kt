@@ -24,8 +24,8 @@ class TestingAccessScreens : AppCompatActivity() {
             startActivity(intent)
         }
         binding.button3.setOnClickListener{
-            //val intent = Intent(this,S1LoginScreen::class.java)
-            //startActivity(intent)
+            val intent = Intent(this,S3BlogEntries::class.java)
+            startActivity(intent)
         }
         binding.button4.setOnClickListener{
             val intent = Intent(this,S4NewEntry::class.java)
