@@ -104,7 +104,7 @@ class S2RegisterScreen : AppCompatActivity() {
         val data = file.readText()
         data.split("\n").forEach {
             val temp = it.split("|||")
-            if (!userDb.containsKey(temp[0])){
+            if (!userDb.containsKey(temp[0])) {
                 userDb[temp[0]] = mutableListOf(temp[1], temp[2])
             }
         }

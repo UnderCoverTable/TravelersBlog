@@ -5,7 +5,8 @@ import androidx.annotation.StringRes
 
 data class Info (
     @DrawableRes val imageResourceId: Int,
-    @StringRes val stringTitle: Int,
-    @StringRes val stringDescription: Int,
-    @StringRes val stringAuthor: Int
+    val place: String,
+    val longDesc: String,
+    val shortDesc: String,
+    val author: String
 )

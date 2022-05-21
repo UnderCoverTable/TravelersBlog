@@ -111,5 +111,15 @@
         app:layout_constraintStart_toStartOf="@+id/outlinedTextFieldLongdesc"
         tools:layout_editor_absoluteY="613dp" />
 
+    <EditText
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Author Name"
+        app:layout_constraintEnd_toEndOf="@+id/outlinedTextFieldLongdesc"
+        app:layout_constraintStart_toStartOf="@+id/outlinedTextFieldLongdesc"
+        tools:layout_editor_absoluteY="532dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
