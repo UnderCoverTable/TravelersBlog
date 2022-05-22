@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.travelersblog.S3RecyclerView.model.Info
 import com.example.travelersblog.databinding.ActivityS4NewEntryBinding
 import java.io.File
 
@@ -20,6 +21,7 @@ class S4NewEntry : AppCompatActivity() {
 
         file = File(filesDir, "blog-db.txt")
         file.createNewFile()
+        file.appendText("3||Hunza||Beutifyl place hunza||hunza is a beautiful plca||Baig\n")
         loadData()
 
         supportActionBar?.hide()
@@ -44,6 +46,7 @@ class S4NewEntry : AppCompatActivity() {
             val author = binding.author.text.toString()
             saveEntry(imageId = imageId, place = place, shortDesc = shortDesc, longDesc = longDesc, author = author)
             resetViews()
+            TODO("Show successfully stored msg")
         }
 
     }
@@ -53,16 +56,21 @@ class S4NewEntry : AppCompatActivity() {
         binding.editTextLongdesc.text = null
         binding.editTextShortdesc.text = null
         binding.editTextPlace.text = null
+        binding.author.text = null
     }
 
-    private fun saveEntry(imageId: String, place: String, shortDesc: String, longDesc: String = " ", author: String) {
+    private fun saveEntry(imageId: String, place: String, shortDesc: String, longDesc: String, author: String) {
         file.appendText("${imageId}||${place}||${shortDesc}||${longDesc}||${author}\n")
     }
 
     private fun loadData() {
         val data = file.readText()
+
         if (data.isNotEmpty()){
-            data.split("\n").forEach {
+            val splitData: MutableList<String> = data.split("\n") as MutableList<String>
+            splitData.removeLast()
+
+            splitData.forEach {
                 val temp = it.split("||")
                 if (!blogDb.containsKey(temp[0] + "||" + temp[1])) {
                     blogDb[temp[0] + "||" + temp[1]] = mutableListOf(temp[2], temp[3], temp[4])

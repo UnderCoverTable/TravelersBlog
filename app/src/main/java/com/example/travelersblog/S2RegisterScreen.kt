@@ -23,7 +23,7 @@ class S2RegisterScreen : AppCompatActivity() {
         file.createNewFile()
         loadData()
 
-        binding.LoginButton.setOnClickListener {
+        binding.RegisterS2Button.setOnClickListener {
             val email = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString()
             val confirmPassword = binding.editTextConfirmPassword.text.toString()
@@ -100,13 +100,17 @@ class S2RegisterScreen : AppCompatActivity() {
 
     private fun writeToFile(user: User) {
         file.appendText("${user.username}|||${user.password}|||${user.email}\n")
+        loadData()
     }
 
     private fun loadData() {
         val data = file.readText()
         if (data.isNotEmpty()) {
-            data.split("\n").forEach {
-                val temp = it.split(", ")
+            val splitData: MutableList<String> = data.split("\n") as MutableList<String>
+            splitData.removeLast()
+
+            splitData.forEach {
+                val temp = it.split("|||")
                 if (!userDb.containsKey(temp[0])) {
                     userDb.put(temp[0], mutableListOf(temp[1], temp[2]))
                 }

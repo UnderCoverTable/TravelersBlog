@@ -18,7 +18,10 @@ class DataSource_s3(private val context: Context) {
         val entries: MutableList<Info> = mutableListOf()
 
         if (data.isNotEmpty()){
-            data.split("\n").forEach {
+            val splitData: MutableList<String> = data.split("\n") as MutableList<String>
+            splitData.removeLast()
+
+            splitData.forEach {
                 val temp = it.split("||")
                 entries.add(
                     Info(
