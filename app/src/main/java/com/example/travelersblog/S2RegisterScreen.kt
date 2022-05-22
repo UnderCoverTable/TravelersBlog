@@ -9,8 +9,8 @@ import java.util.regex.Pattern
 
 class S2RegisterScreen : AppCompatActivity() {
     private lateinit var binding: ActivityS2RegisterScreenBinding
-    private val file = File(this.filesDir, "user-db.txt")
-    private lateinit var userDb: MutableMap<String, MutableList<String>>
+    private lateinit var file: File
+    private var userDb = mutableMapOf<String, MutableList<String>>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,9 +19,9 @@ class S2RegisterScreen : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        Log.d("FileExists", "user-db.txt exists: ${file.exists()}")
-        loadData()
+        file = File(filesDir, "user-db.txt")
         file.createNewFile()
+        loadData()
 
         binding.LoginButton.setOnClickListener {
             val email = binding.editTextEmail.text.toString().trim()
@@ -104,10 +104,12 @@ class S2RegisterScreen : AppCompatActivity() {
 
     private fun loadData() {
         val data = file.readText()
-        data.split("\n").forEach {
-            val temp = it.split("|||")
-            if (!userDb.containsKey(temp[0])) {
-                userDb[temp[0]] = mutableListOf(temp[1], temp[2])
+        if (data.isNotEmpty()) {
+            data.split("\n").forEach {
+                val temp = it.split(", ")
+                if (!userDb.containsKey(temp[0])) {
+                    userDb.put(temp[0], mutableListOf(temp[1], temp[2]))
+                }
             }
         }
     }

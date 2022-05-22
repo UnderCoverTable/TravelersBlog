@@ -9,8 +9,8 @@ import java.io.File
 
 class S4NewEntry : AppCompatActivity() {
     private lateinit var binding: ActivityS4NewEntryBinding
-    private val file = File(this.filesDir, "blog-db.txt")
-    private lateinit var blogDb: MutableMap<String, MutableList<String>>
+    private lateinit var file : File
+    private var blogDb = mutableMapOf<String, MutableList<String>>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,9 +18,9 @@ class S4NewEntry : AppCompatActivity() {
         binding = ActivityS4NewEntryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.d("FileExists", "blog-db.txt exists: ${file.exists()}")
-        loadData()
+        file = File(filesDir, "blog-db.txt")
         file.createNewFile()
+        loadData()
 
         supportActionBar?.hide()
 
@@ -61,10 +61,12 @@ class S4NewEntry : AppCompatActivity() {
 
     private fun loadData() {
         val data = file.readText()
-        data.split("\n").forEach {
-            val temp = it.split("||")
-            if (!blogDb.containsKey(temp[0] + "||" + temp[1])) {
-                blogDb[temp[0] + "||" + temp[1]] = mutableListOf(temp[2], temp[3], temp[4])
+        if (data.isNotEmpty()){
+            data.split("\n").forEach {
+                val temp = it.split("||")
+                if (!blogDb.containsKey(temp[0] + "||" + temp[1])) {
+                    blogDb[temp[0] + "||" + temp[1]] = mutableListOf(temp[2], temp[3], temp[4])
+                }
             }
         }
     }

@@ -9,9 +9,9 @@ import com.example.travelersblog.databinding.ActivityS1LoginScreenBinding
 import java.io.File
 
 class S1LoginScreen : AppCompatActivity() {
+    private lateinit var file: File
     private lateinit var binding: ActivityS1LoginScreenBinding
-    private val file = File(this.filesDir, "user-db.txt")
-    private lateinit var userDb: MutableMap<String, MutableList<String>>
+    private var userDb = mutableMapOf<String, MutableList<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,9 @@ class S1LoginScreen : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        Log.d("FileExists", "user-db.txt exists: ${file.exists()}")
+
+        file = File(filesDir, "user-db.txt")
+        file.createNewFile()
         loadData()
 
         binding.RegisterButton.setOnClickListener {
@@ -62,10 +64,12 @@ class S1LoginScreen : AppCompatActivity() {
 
     private fun loadData() {
         val data = file.readText()
-        data.split("\n").forEach {
-            val temp = it.split(", ")
-            if (!userDb.containsKey(temp[0])) {
-                userDb[temp[0]] = mutableListOf(temp[1], temp[2])
+        if (data.isNotEmpty()) {
+            data.split("\n").forEach {
+                val temp = it.split(", ")
+                if (!userDb.containsKey(temp[0])) {
+                    userDb.put(temp[0], mutableListOf(temp[1], temp[2]))
+                }
             }
         }
     }
