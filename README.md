@@ -1,0 +1,2 @@
+# Traveler's Blog
+This android app is made in Kotlin on Android Studio. It is a blog app with password authentication and multiple recycler views. [Click here for detailed requirements/features of this app](https://cdn-uploads.piazza.com/paste/ie6v3ghsniyx2/3a9cac4943365bb8f725592a3276a7c2f598fbc676ed424630491e7443f1c83f/assign1.pdf)
