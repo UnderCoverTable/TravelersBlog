@@ -10,8 +10,8 @@ import com.example.travelersblog.R
 import com.example.travelersblog.S3RecyclerView.model.Info
 
 
-class ItemAdapter_s3 ( private val dataset: MutableList<Info>
-) : RecyclerView.Adapter<ItemAdapter_s3.ItemViewHolder>() {
+class ItemAdapterS3 (private val dataset: MutableList<Info>
+) : RecyclerView.Adapter<ItemAdapterS3.ItemViewHolder>() {
 
     class ItemViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         val imagePlace: ImageView = view.findViewById(R.id.s3image)

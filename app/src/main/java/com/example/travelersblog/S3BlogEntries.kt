@@ -1,12 +1,9 @@
 package com.example.travelersblog
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.travelersblog.S3RecyclerView.adapter.ItemAdapter_s3
-import com.example.travelersblog.S3RecyclerView.data.DataSource_s3
-import com.example.travelersblog.S5RecyclerView.adapter.ItemAdapter
-import com.example.travelersblog.S5RecyclerView.data.Datasource
+import com.example.travelersblog.S3RecyclerView.adapter.ItemAdapterS3
+import com.example.travelersblog.S3RecyclerView.data.DataSourceS3
 import com.example.travelersblog.databinding.ActivityS3BlogEntriesBinding
 
 class S3BlogEntries : AppCompatActivity() {
@@ -17,8 +14,8 @@ class S3BlogEntries : AppCompatActivity() {
         binding = ActivityS3BlogEntriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val myDataset = DataSource_s3(this).loadInfo()
-        binding.s3RecyclerView.adapter = ItemAdapter_s3(myDataset)
+        val myDataset = DataSourceS3(this).loadInfo()
+        binding.s3RecyclerView.adapter = ItemAdapterS3(myDataset)
 
         val guest: Boolean = intent.getBooleanExtra("guest", true)
 

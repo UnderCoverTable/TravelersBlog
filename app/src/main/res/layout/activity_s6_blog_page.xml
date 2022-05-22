@@ -6,4 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".S6BlogPage">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fig001" />
+
+    <TextView
+        android:id="@+id/s6Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/s6ShortDesc"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/s6ShortDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/s6Author"
+        app:layout_constraintTop_toBottomOf="@+id/s6Title" />
+
+    <TextView
+        android:id="@+id/s6Author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/s6ratingBar"
+        app:layout_constraintStart_toStartOf="@+id/s6ratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/s6ShortDesc" />
+
+    <RatingBar
+        android:id="@+id/s6ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="83dp"
+        android:rating="2.5"
+        android:stepSize=".5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/s6Author" />
+
+    <TextView
+        android:id="@+id/s6LongDesc"
+        android:layout_width="360dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="26dp"
+        android:scrollbars="vertical"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/s6ratingBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

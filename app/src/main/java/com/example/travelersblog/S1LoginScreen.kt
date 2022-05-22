@@ -1,9 +1,11 @@
 package com.example.travelersblog
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.travelersblog.databinding.ActivityMainBinding
 import com.example.travelersblog.databinding.ActivityS1LoginScreenBinding
 import java.io.File
@@ -34,10 +36,14 @@ class S1LoginScreen : AppCompatActivity() {
             val password = binding.editTextPassword.text.toString().trim()
 
             if (validate(username = username, password = password)) {
+               // Toast.makeText(this, "DONE", Toast.LENGTH_SHORT).show()
+                Log.d(TAG,"DONE LOGIN")
+
                 val intent = Intent(this, S3BlogEntries::class.java)
                 intent.putExtra("guest", false)
                 startActivity(intent)
             } else {
+                Log.d(TAG,"FAIL LOGIN")
                 TODO("Show an error message that credentials not found in records")
             }
         }

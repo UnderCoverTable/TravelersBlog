@@ -7,7 +7,7 @@ import com.example.travelersblog.S3RecyclerView.model.Info
 import com.example.travelersblog.S5RecyclerView.model.Images
 import java.io.File
 
-class DataSource_s3(private val context: Context) {
+class DataSourceS3(private val context: Context) {
     private lateinit var file: File
 
     fun loadInfo(): MutableList<Info> {
