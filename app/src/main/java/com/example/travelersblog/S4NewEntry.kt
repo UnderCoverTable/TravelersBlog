@@ -42,15 +42,13 @@ class S4NewEntry : AppCompatActivity() {
 
         binding.saveButton.setOnClickListener {
             val imageId = S5ImageList.imageID.toString()
-            Log.d("Image id", imageId)
             val place = binding.editTextPlace.text.toString()
             val shortDesc = binding.editTextShortdesc.text.toString()
             val longDesc = binding.editTextLongdesc.text.toString()
-            val author = binding.author.text.toString()
+            val author = intent.getStringExtra("author").toString()
             saveEntry(imageId = imageId, place = place, shortDesc = shortDesc, longDesc = longDesc, author = author)
             val intent = Intent(this, S3BlogEntries::class.java)
             startActivity(intent)
-//            TODO("Show successfully stored msg")
         }
 
     }
@@ -60,7 +58,6 @@ class S4NewEntry : AppCompatActivity() {
         binding.editTextLongdesc.text = null
         binding.editTextShortdesc.text = null
         binding.editTextPlace.text = null
-        binding.author.text = null
     }
 
     private fun saveEntry(imageId: String, place: String, shortDesc: String, longDesc: String, author: String) {

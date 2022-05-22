@@ -15,6 +15,7 @@ class S1LoginScreen : AppCompatActivity() {
     private lateinit var binding: ActivityS1LoginScreenBinding
     private var userDb = mutableMapOf<String, MutableList<String>>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityS1LoginScreenBinding.inflate(layoutInflater)
@@ -25,6 +26,9 @@ class S1LoginScreen : AppCompatActivity() {
         file = File(filesDir, "user-db.txt")
         if (!file.exists()) {
             file.createNewFile()
+            file.appendText("kintama|||12345678|||sexy@gmail.com\n" +
+                    "sameed|||12345678|||hot@gmail.com\n" +
+                    "penis|||12345678|||penis@gmail.com\n")
         }
         loadData()
 
@@ -45,6 +49,7 @@ class S1LoginScreen : AppCompatActivity() {
 
                 val intent = Intent(this, S3BlogEntries::class.java)
                 intent.putExtra("guest", false)
+                intent.putExtra("author", username)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()

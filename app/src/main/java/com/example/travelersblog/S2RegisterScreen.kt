@@ -55,8 +55,8 @@ class S2RegisterScreen : AppCompatActivity() {
             else if (password != confirmPassword) {
                 flag = 0
                 //resetPasswordEditTexts()
-                Toast.makeText(this, "Password doesnt match", Toast.LENGTH_LONG).show()
-                binding.editTextConfirmPassword.error = "Password doesnt match"
+                Toast.makeText(this, "Password doesn't match", Toast.LENGTH_LONG).show()
+                binding.editTextConfirmPassword.error = "Password doesn't match"
 
             }
 

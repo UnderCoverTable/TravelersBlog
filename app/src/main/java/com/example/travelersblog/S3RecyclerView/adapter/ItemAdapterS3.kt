@@ -1,21 +1,22 @@
 package com.example.travelersblog.S3RecyclerView.adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelersblog.R
-import com.example.travelersblog.S1LoginScreen
 import com.example.travelersblog.S3RecyclerView.model.Info
 import com.example.travelersblog.S6BlogPage
 import com.google.android.material.card.MaterialCardView
+import java.io.File
 
 
-class ItemAdapterS3 (private val dataset: MutableList<Info>
+class ItemAdapterS3 (private val guest: Boolean, private val author: String, private val dataset: MutableList<Info>
 ) : RecyclerView.Adapter<ItemAdapterS3.ItemViewHolder>() {
     companion object{
         var s6Image = 0
@@ -49,6 +50,14 @@ class ItemAdapterS3 (private val dataset: MutableList<Info>
         holder.textDescription.text = item.shortDesc
         holder.textAuthor.text = item.author
 
+        holder.card.setOnLongClickListener {
+            if (item.author == author) {
+                dataset.remove(item)
+                deleteEntry(holder.view.context, item)
+            } else {
+                Toast.makeText(holder.view.context, "You can't delete this entry!", Toast.LENGTH_LONG).show()
+            }
+        }
 
         holder.card.setOnClickListener {
             val context = holder.view.context
@@ -59,16 +68,33 @@ class ItemAdapterS3 (private val dataset: MutableList<Info>
             s6Author = item.author
 
             val intent = Intent(context, S6BlogPage::class.java)
+            intent.putExtra("author", author)
+            intent.putExtra("guest", guest)
             context.startActivity(intent)
         }
+    }
 
-        //holder.card.setOnLongClickListener{}
+    private fun deleteEntry(context: Context, entry: Info) {
+        val file = File(context.filesDir, "blog-db.txt")
+        var data = file.readText()
+        val toDelete = "${entry.imageResourceId}||${entry.place}||${entry.shortDesc}||${entry.longDesc}||${entry.author}"
 
+        if (data.isNotEmpty()) {
+            val splitData: MutableList<String> = data.split("\n") as MutableList<String>
+
+            splitData.forEach {
+                if (toDelete in it) {
+                    splitData.remove(it)
+                }
+            }
+            data = splitData.joinToString("\n")
+            file.delete()
+            file.createNewFile()
+            file.appendText(data)
+        }
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
-
-
 }

@@ -16,10 +16,12 @@ class S3BlogEntries : AppCompatActivity() {
         binding = ActivityS3BlogEntriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val username = intent.getStringExtra("author")
         val myDataset = DataSourceS3(this).loadInfo()
-        binding.s3RecyclerView.adapter = ItemAdapterS3(myDataset)
-
         val guest: Boolean = intent.getBooleanExtra("guest", true)
+
+        binding.s3RecyclerView.adapter = ItemAdapterS3(guest, username.toString(), myDataset)
+
 
 
         if (guest) {
@@ -35,6 +37,7 @@ class S3BlogEntries : AppCompatActivity() {
         }else {
             binding.s3NewBlogButton.setOnClickListener {
                 val intent = Intent(this, S4NewEntry::class.java)
+                intent.putExtra("author", username)
                 startActivity(intent)
             }
             binding.s3LogoutButton.setOnClickListener {
@@ -42,6 +45,5 @@ class S3BlogEntries : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
     }
 }
