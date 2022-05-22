@@ -23,6 +23,9 @@ class S2RegisterScreen : AppCompatActivity() {
         file = File(filesDir, "user-db.txt")
         if (!file.exists()) {
             file.createNewFile()
+            file.appendText("kintama|||12345678|||sexy@gmail.com\n" +
+                    "sameed|||12345678|||hot@gmail.com\n" +
+                    "penis|||12345678|||penis@gmail.com\n")
         }
         loadData()
 

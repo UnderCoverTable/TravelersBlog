@@ -38,15 +38,21 @@ class S1LoginScreen : AppCompatActivity() {
             val password = binding.editTextPassword.text.toString().trim()
 
             if (validate(username = username, password = password)) {
-               // Toast.makeText(this, "DONE", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                 Log.d(TAG,"DONE LOGIN")
 
                 val intent = Intent(this, S3BlogEntries::class.java)
                 intent.putExtra("guest", false)
                 startActivity(intent)
             } else {
-                Log.d(TAG,"FAIL LOGIN")
-                TODO("Show an error message that credentials not found in records")
+                Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+
+                if(userDb.containsKey(username)){
+                    binding.editTextPassword.error = "Wrong password"
+                }
+                else{
+                    binding.editTextUsername.error = "Username does not exist"
+                }
             }
         }
 

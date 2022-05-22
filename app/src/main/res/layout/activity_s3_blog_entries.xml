@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="100dp"
-        android:text="Button"
+        android:text="New Entry"
         app:layout_constraintEnd_toStartOf="@+id/s3LogoutButton"
         app:layout_constraintTop_toBottomOf="@+id/s3_recyclerView" />
 
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="59dp"
-        android:text="Button"
+        android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/s3_recyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
