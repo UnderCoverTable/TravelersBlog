@@ -3,6 +3,7 @@ package com.example.travelersblog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.travelersblog.databinding.ActivityS2RegisterScreenBinding
 import java.io.File
@@ -30,41 +31,54 @@ class S2RegisterScreen : AppCompatActivity() {
         loadData()
 
         binding.RegisterS2Button.setOnClickListener {
+            var flag = 1
             val email = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString()
             val confirmPassword = binding.editTextConfirmPassword.text.toString()
             val username = binding.editTextUsername.text.toString().trim()
 
+
             if (usernameExists(username)) {
-                resetEditTexts()
-                TODO("Username already exists alert (dialog box?)")
+                flag = 0
+                //resetEditTexts()
+                Toast.makeText(this, "Username already Exists", Toast.LENGTH_LONG).show()
+                binding.editTextUsername.error = "Username already Exists"
             }
 
-            if (emailExists(username)) {
-                resetEditTexts()
-                TODO("Email already exists (dialog box?)")
+            else if (emailExists(username)) {
+                flag = 0
+                //resetEditTexts()
+                Toast.makeText(this, "Email already Exists", Toast.LENGTH_LONG).show()
+                binding.editTextEmail.error = "Email already Exists"
             }
 
-            if (password != confirmPassword) {
-                resetPasswordEditTexts()
-                TODO("Passwords don't match alert")
+            else if (password != confirmPassword) {
+                flag = 0
+                //resetPasswordEditTexts()
+                Toast.makeText(this, "Password doesnt match", Toast.LENGTH_LONG).show()
+                binding.editTextConfirmPassword.error = "Password doesnt match"
+
             }
 
-            if (password.length < 8) {
-                resetPasswordEditTexts()
-                TODO("Weak Password alert")
+           // if (password.length < 8) {
+           //     resetPasswordEditTexts()
+           //     TODO("Weak Password alert")
+          //  }
+
+            else if (!isValidEmail(email)) {
+                flag = 0
+                //resetEditTexts()
+                Toast.makeText(this, "Invalid Email", Toast.LENGTH_LONG).show()
+                binding.editTextEmail.error = "Invalid Email"
             }
 
-            if (!isValidEmail(email)) {
-                resetEditTexts()
-                TODO("Invalid email alert (dialog box?)")
+            if (flag == 1) {
+                val user = User(username = username, email = email, password = password)
+                writeToFile(user)
+                loadData()
+                val intent = Intent(this, S1LoginScreen::class.java)
+                startActivity(intent)
             }
-
-            val user = User(username = username, email = email, password = password)
-            writeToFile(user)
-            loadData()
-            val intent = Intent(this, S1LoginScreen::class.java)
-            startActivity(intent)
         }
 
     }

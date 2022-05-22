@@ -37,7 +37,9 @@ class S1LoginScreen : AppCompatActivity() {
             val username = binding.editTextUsername.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()
 
-            if (validate(username = username, password = password)) {
+
+
+            if ((validate(username = username, password = password))  && username != "" && password != "" ){
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                 Log.d(TAG,"DONE LOGIN")
 

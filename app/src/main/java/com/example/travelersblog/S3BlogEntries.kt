@@ -1,6 +1,8 @@
 package com.example.travelersblog
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.travelersblog.S3RecyclerView.adapter.ItemAdapterS3
 import com.example.travelersblog.S3RecyclerView.data.DataSourceS3
@@ -19,11 +21,27 @@ class S3BlogEntries : AppCompatActivity() {
 
         val guest: Boolean = intent.getBooleanExtra("guest", true)
 
-        //if (guest) {
-       //     TODO("Show guest view with Logout & New button disabled")
-        //}else {
-        //    TODO("Normal view for logged in User")
-       // }
+
+        if (guest) {
+            binding.s3NewBlogButton.setOnClickListener {
+                Toast.makeText(this, "Please login to make new entry", Toast.LENGTH_LONG).show()
+            }
+            binding.s3LogoutButton.setOnClickListener {
+                val intent = Intent(this, S1LoginScreen::class.java)
+                startActivity(intent)
+            }
+
+
+        }else {
+            binding.s3NewBlogButton.setOnClickListener {
+                val intent = Intent(this, S4NewEntry::class.java)
+                startActivity(intent)
+            }
+            binding.s3LogoutButton.setOnClickListener {
+                val intent = Intent(this, S1LoginScreen::class.java)
+                startActivity(intent)
+            }
+        }
 
     }
 }
