@@ -5,4 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/_99162"/>
+    android:background="@drawable/luke_chesser_hqo6uyo4nbg_unsplash"/>

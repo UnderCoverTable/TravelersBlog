@@ -14,8 +14,12 @@ class S1LoginScreen : AppCompatActivity() {
     private lateinit var file: File
     private lateinit var binding: ActivityS1LoginScreenBinding
     private var userDb = mutableMapOf<String, MutableList<String>>()
+    companion object{
+        var isGuest = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityS1LoginScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,6 +49,7 @@ class S1LoginScreen : AppCompatActivity() {
 
                 val intent = Intent(this, S3BlogEntries::class.java)
                 intent.putExtra("guest", false)
+                isGuest = 1
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
