@@ -1,5 +1,6 @@
 package com.example.travelersblog
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,9 @@ class S2RegisterScreen : AppCompatActivity() {
         supportActionBar?.hide()
 
         file = File(filesDir, "user-db.txt")
-        file.createNewFile()
+        if (!file.exists()) {
+            file.createNewFile()
+        }
         loadData()
 
         binding.RegisterS2Button.setOnClickListener {
@@ -57,6 +60,8 @@ class S2RegisterScreen : AppCompatActivity() {
             val user = User(username = username, email = email, password = password)
             writeToFile(user)
             loadData()
+            val intent = Intent(this, S1LoginScreen::class.java)
+            startActivity(intent)
         }
 
     }

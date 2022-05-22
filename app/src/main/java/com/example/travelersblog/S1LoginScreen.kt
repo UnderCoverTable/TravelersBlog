@@ -23,7 +23,9 @@ class S1LoginScreen : AppCompatActivity() {
 
 
         file = File(filesDir, "user-db.txt")
-        file.createNewFile()
+        if (!file.exists()) {
+            file.createNewFile()
+        }
         loadData()
 
         binding.RegisterButton.setOnClickListener {

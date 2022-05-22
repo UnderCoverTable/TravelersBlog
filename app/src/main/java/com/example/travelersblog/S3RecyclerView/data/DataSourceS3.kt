@@ -13,7 +13,10 @@ class DataSourceS3(private val context: Context) {
     fun loadInfo(): MutableList<Info> {
 
         file = File(context.filesDir, "blog-db.txt")
-        file.createNewFile()
+        if (!file.exists()) {
+            file.createNewFile()
+        }
+//        file.appendText("fig001||Hunza||Beutifyl place hunza||hunza is a beautiful plca||Baig\n")
         val data = file.readText()
         val entries: MutableList<Info> = mutableListOf()
 

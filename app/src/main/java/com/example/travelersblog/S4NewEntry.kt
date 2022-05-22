@@ -20,8 +20,10 @@ class S4NewEntry : AppCompatActivity() {
         setContentView(binding.root)
 
         file = File(filesDir, "blog-db.txt")
-        file.createNewFile()
-        file.appendText("3||Hunza||Beutifyl place hunza||hunza is a beautiful plca||Baig\n")
+        if (!file.exists()) {
+            file.createNewFile()
+        }
+//        file.appendText("fig001||Hunza||Beutifyl place hunza||hunza is a beautiful plca||Baig\n")
         loadData()
 
         supportActionBar?.hide()
@@ -40,13 +42,15 @@ class S4NewEntry : AppCompatActivity() {
 
         binding.saveButton.setOnClickListener {
             val imageId = S5ImageList.imageID.toString()
+            Log.d("Image id", imageId)
             val place = binding.editTextPlace.text.toString()
             val shortDesc = binding.editTextShortdesc.text.toString()
             val longDesc = binding.editTextLongdesc.text.toString()
             val author = binding.author.text.toString()
             saveEntry(imageId = imageId, place = place, shortDesc = shortDesc, longDesc = longDesc, author = author)
-            resetViews()
-            TODO("Show successfully stored msg")
+            val intent = Intent(this, S3BlogEntries::class.java)
+            startActivity(intent)
+//            TODO("Show successfully stored msg")
         }
 
     }
